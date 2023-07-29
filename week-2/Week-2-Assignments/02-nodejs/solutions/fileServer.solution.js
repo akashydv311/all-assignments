@@ -19,7 +19,9 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+
 const app = express();
+
 
 app.get('/files', (req, res) => {
   fs.readdir(path.join(__dirname, './files/'), (err, files) => {
@@ -44,5 +46,6 @@ app.get('/file/:filename', (req, res) => {
 app.all('*', (req, res) => {
   res.status(404).send('Route not found');
 });
+
 
 module.exports = app;
